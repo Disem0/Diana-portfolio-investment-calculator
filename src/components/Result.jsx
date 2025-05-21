@@ -9,14 +9,6 @@ export default function Result({initialInvestment, annualInvestment, expectedRet
         duration: duration
     }
     const results = calculateInvestmentResults(investmentData);
-    // const roundedResults = results.map(item => ({
-    //     ...item,
-    //     annualInvestment: Math.round(item.annualInvestment),
-    //     valueEndOfYear: Math.round(item.valueEndOfYear),
-    //     interest: Math.round(item.interest),
-    //     totalInterest: Math.round(item.totalInterest),
-    // }));
-    // console.log(results);
 
     return(
         <div id="result" className="center">
@@ -35,9 +27,9 @@ export default function Result({initialInvestment, annualInvestment, expectedRet
                         <tr key={index}>
                             <td>{item.year}</td>
                             <td>{formatter.format(item.valueEndOfYear)}</td>
-                            <td>{formatter.format(Number(item.interest))}</td>
-                            <td>{formatter.format(Number(item.totalInterest))}</td>
-                            <td>{formatter.format(Number(investmentData.initialInvestment + item.annualInvestment * item.year))}</td>
+                            <td>{formatter.format(item.interest)}</td>
+                            <td>{formatter.format(item.totalInterest)}</td>
+                            <td>{formatter.format(investmentData.initialInvestment + item.annualInvestment * item.year)}</td>
                         </tr>
                     ))}
                 </tbody>
